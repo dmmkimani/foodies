@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('about')->nullable();
             $table->string('address');
-            $table->string('opening_time');
-            $table->string('closing_time');
+            $table->string('opening_time')->nullable();
+            $table->string('closing_time')->nullable();
             $table->string('telephone_number');
             $table->string('website')->nullable();
             $table->double('rating', 8, 2)->nullable();

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('posted_by');
-            $table->string('restaurant_name');
+            $table->integer('restaurant_id');
             $table->string('meal_picture');
             $table->double('price', 8, 2);
             $table->double('rating', 8, 2);
