@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+
+    public function foodie() {
+        return $this->belongsTo(Foodie::class);
+    }
+
+    public function restaurant() {
+        return $this->belongsTo(Restaurant::class);
+    }
 }

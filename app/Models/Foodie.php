@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Foodie extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'username';
+    protected $keyType = 'string';
+    
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
 }

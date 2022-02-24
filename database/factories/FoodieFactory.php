@@ -17,6 +17,7 @@ class FoodieFactory extends Factory
     public function definition()
     {
         return [
+            'email_address' => $this->faker->email(),
             'username' => $this->faker->userName(),
             'fName' => $this->faker->firstName(),
             'lName' => $this->faker->lastName(),

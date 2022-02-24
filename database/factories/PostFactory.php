@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Foodie;
+use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,12 +19,21 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'posted_by' => $this->faker->userName(),
-            'restaurant_id' => $this->faker->numberBetween(1, 20),
+            'foodie_username' => PostFactory::randomFoodie(),
+            'restaurant_id' => $this->faker->numberBetween(1, Restaurant::count()),
             'meal_picture' => $this->faker->image('/tmp'),
             'price' => $this->faker->randomFloat(2, 5, 40),
             'rating' => $this->faker->randomFloat(2, 0, 5),
             'review' => $this->faker->sentence(15),
         ];
+    }
+
+    public function randomFoodie() {
+        $foodies_list = [];
+        $foodies = Foodie::get();
+        foreach($foodies as $foodie) {
+            $foodies_list[] = $foodie->username;
+        }
+        return $foodies_list[array_rand($foodies_list)];
     }
 }

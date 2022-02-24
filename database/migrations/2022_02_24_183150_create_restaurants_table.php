@@ -17,11 +17,11 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('about')->nullable();
-            $table->string('address');
+            $table->string('address')->unique();
             $table->string('opening_time')->nullable();
             $table->string('closing_time')->nullable();
-            $table->string('telephone_number');
-            $table->string('website')->nullable();
+            $table->string('telephone_number')->unique();
+            $table->string('website')->unique()->nullable();
             $table->double('rating', 8, 2)->nullable();
             $table->timestamps();
         });
