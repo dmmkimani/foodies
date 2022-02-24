@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('foodies', function (Blueprint $table) {
-            $table->string('username')->primary();
-            $table->string('cover_image')->nullable();
-            $table->string('profile_picture')->nullable();
-            $table->string('fName')->nullable();
-            $table->string('lName')->nullable();
+        Schema::create('posts', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('posted_by');
+            $table->string('restaurant_name');
+            $table->string('meal_picture');
+            $table->double('price', 8, 2);
+            $table->double('rating', 8, 2);
+            $table->string('review');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foodies');
+        Schema::dropIfExists('posts');
     }
 };
