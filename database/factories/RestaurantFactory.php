@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,7 +23,6 @@ class RestaurantFactory extends Factory
             'address' => $this->faker->streetAddress(),
             'telephone_number' => $this->faker->e164PhoneNumber(),
             'website' => $this->faker->url(),
-            'rating' => $this->faker->randomFloat(2, 0, 5),
         ];
     }
 }

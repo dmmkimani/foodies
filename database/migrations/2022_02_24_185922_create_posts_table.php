@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('meal_picture');
             $table->double('price', 8, 2);
             $table->double('rating', 8, 2);
-            $table->string('review');
+            $table->text('review');
             $table->timestamps();
 
             $table->unique(['id', 'foodie_username']);
