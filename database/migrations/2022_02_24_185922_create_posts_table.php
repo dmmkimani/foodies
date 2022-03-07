@@ -21,6 +21,7 @@ return new class extends Migration
             $table->double('price', 8, 2);
             $table->double('rating', 8, 2);
             $table->text('review');
+            $table->integer('likes');
             $table->timestamps();
 
             $table->unique(['id', 'foodie_username']);
