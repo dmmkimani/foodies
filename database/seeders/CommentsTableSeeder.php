@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Foodie;
+use App\Models\Comment;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class FoodiesTableSeeder extends Seeder
+class CommentsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class FoodiesTableSeeder extends Seeder
      */
     public function run()
     {
-        Foodie::factory()->count(50)->create();
+        Comment::factory()->count(200)->create();
     }
 }

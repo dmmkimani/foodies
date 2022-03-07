@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
 use App\Models\Restaurant;
 use App\Models\Post;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -19,6 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(FoodiesTableSeeder::class);
         $this->call(RestaurantsTableSeeder::class);
         $this->call(PostsTableSeeder::class);
+        $this->call(CommentsTableSeeder::class);
+        
         DatabaseSeeder::getRatings();
     }
 
