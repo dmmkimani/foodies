@@ -22,10 +22,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PostsTableSeeder::class);
         $this->call(CommentsTableSeeder::class);
         
-        DatabaseSeeder::getRatings();
+        DatabaseSeeder::getRestaurantRatings();
     }
 
-    public function getRatings()
+    public function getRestaurantRatings()
     {
         for ($i = 1; $i <= Restaurant::count(); $i++) {
             $avg_rating = Post::get()->where('restaurant_id', $i)->avg('rating');

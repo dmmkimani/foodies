@@ -23,7 +23,7 @@ class PostFactory extends Factory
             'restaurant_id' => $this->faker->numberBetween(1, Restaurant::count()),
             'meal_picture' => $this->faker->image('/tmp'),
             'price' => $this->faker->randomFloat(2, 5, 40),
-            'rating' => $this->faker->randomFloat(2, 0, 5),
+            'rating' => 0.5 * $this->faker->numberBetween(0, 10),
             'review' => $this->faker->sentence($this->faker->numberBetween(10, 30)),
             'likes' => $this->faker->numberBetween(0, 150)
         ];
