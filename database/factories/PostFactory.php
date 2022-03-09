@@ -24,7 +24,7 @@ class PostFactory extends Factory
             'meal_picture' => $this->faker->image('/tmp'),
             'price' => $this->faker->randomFloat(2, 5, 40),
             'rating' => 0.5 * $this->faker->numberBetween(0, 10),
-            'review' => $this->faker->sentence($this->faker->numberBetween(10, 30)),
+            'review' => $this->faker->realText($this->faker->numberBetween(10, 400)),
             'likes' => $this->faker->numberBetween(0, 150)
         ];
     }

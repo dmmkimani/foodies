@@ -19,7 +19,7 @@ class RestaurantFactory extends Factory
     {
         return [
             'name' => $this->faker->company(),
-            'about' => $this->faker->sentence(20),
+            'about' => $this->faker->realText($this->faker->numberBetween(10, 200)),
             'address' => $this->faker->streetAddress(),
             'telephone_number' => $this->faker->e164PhoneNumber(),
             'website' => $this->faker->url(),
