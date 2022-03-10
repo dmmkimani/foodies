@@ -2,10 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Comment;
-use App\Models\Like;
-use App\Models\Restaurant;
-use App\Models\Post;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

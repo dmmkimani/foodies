@@ -15,6 +15,6 @@ class FoodiesTableSeeder extends Seeder
      */
     public function run()
     {
-        Foodie::factory()->count(250)->create();
+        Foodie::factory()->count(150)->create();
     }
 }
