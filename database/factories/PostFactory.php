@@ -29,7 +29,8 @@ class PostFactory extends Factory
         ];
     }
 
-    public function randomFoodie() {
+    public function randomFoodie() 
+    {
         $foodies_list = [];
         $foodies = Foodie::get();
         foreach($foodies as $foodie) {
