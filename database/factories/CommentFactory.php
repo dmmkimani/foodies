@@ -19,19 +19,10 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'foodie_username' => CommentFactory::randomFoodie(),
+            'foodie_username' => Foodie::randomFoodie(),
             'post_id' => $this->faker->numberBetween(1, Post::count()),
             'comment' => $this->faker->realText($this->faker->numberBetween(10, 200)),
             'likes' => $this->faker->numberBetween(0, 105)
         ];
-    }
-
-    public function randomFoodie() {
-        $foodies_list = [];
-        $foodies = Foodie::get();
-        foreach($foodies as $foodie) {
-            $foodies_list[] = $foodie->username;
-        }
-        return $foodies_list[array_rand($foodies_list)];
     }
 }
