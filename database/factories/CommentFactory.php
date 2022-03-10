@@ -22,7 +22,6 @@ class CommentFactory extends Factory
             'foodie_username' => Foodie::randomFoodie(),
             'post_id' => $this->faker->numberBetween(1, Post::count()),
             'comment' => $this->faker->realText($this->faker->numberBetween(10, 200)),
-            'likes' => $this->faker->numberBetween(0, 105)
         ];
     }
 }

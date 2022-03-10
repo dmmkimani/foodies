@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('foodie_username');
             $table->unsignedBigInteger('post_id');
             $table->text('comment');
-            $table->integer('likes');
             $table->timestamps();
         
             $table->foreign('foodie_username')->references('username')
