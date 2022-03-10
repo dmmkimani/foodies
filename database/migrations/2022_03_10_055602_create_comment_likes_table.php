@@ -13,22 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
-            $table->id();
+        Schema::create('comment_likes', function (Blueprint $table) {
+            $table->primary(['comment_id', 'foodie_username']);
+            $table->unsignedBigInteger('comment_id');
             $table->string('foodie_username');
-            $table->unsignedBigInteger('post_id');
-            $table->text('comment');
             $table->timestamps();
 
-            $table->unique(['id', 'foodie_username', 'post_id']);
-        
-            $table->foreign('foodie_username')->references('username')
-                ->on('foodies')
+            $table->foreign('comment_id')->references('id')
+                ->on('comments')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            
-            $table->foreign('post_id')->references('id')
-                ->on('posts')
+
+            $table->foreign('foodie_username')->references('username')
+                ->on('foodies')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
@@ -41,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('comment_likes');
     }
 };

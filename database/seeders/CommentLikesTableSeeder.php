@@ -2,13 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
+use App\Models\CommentLike;
 use App\Models\Foodie;
-use App\Models\Post;
-use App\Models\PostLike;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class PostLikesTableSeeder extends Seeder
+class CommentLikesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,13 +16,13 @@ class PostLikesTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {   
+    {
         $username_list = Foodie::getUsernames();
-        for ($i = 1; $i < Post::count(); $i++) {
+        for ($i = 1; $i < Comment::count(); $i++) {
             shuffle($username_list);
             for ($j = 0; $j < rand(0, 100); $j++) {
-                Postlike::insert([
-                    'post_id' => $i,
+                CommentLike::insert([
+                    'comment_id' => $i,
                     'foodie_username' => $username_list[$j]
                 ]);
             }
