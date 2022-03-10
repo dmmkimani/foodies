@@ -41,11 +41,7 @@ class Foodie extends Model
     
     public static function randomFoodie() 
     {
-        $foodies_list = [];
-        $foodies = Foodie::get();
-        foreach($foodies as $foodie) {
-            $foodies_list[] = $foodie->username;
-        }
-        return $foodies_list[array_rand($foodies_list)];
+        $username_list = Foodie::getUsernames();
+        return $username_list[array_rand($username_list)];
     }
 }
