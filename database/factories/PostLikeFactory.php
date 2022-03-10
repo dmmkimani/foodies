@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\Post;
 use App\Models\Foodie;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Like>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\PostLike>
  */
-class LikeFactory extends Factory
+class PostLikeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +19,8 @@ class LikeFactory extends Factory
     public function definition()
     {
         return [
-            'post_id' => $this->faker->numberBetween(1, Post::count()),
-            'foodie_username' => Foodie::randomFoodie(),
+            'post_id' => Post::inRandomOrder()->first()->id,
+            'foodie_username' => Foodie::randomFoodie()
         ];
     }
 }

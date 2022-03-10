@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('likes', function (Blueprint $table) {
+        Schema::create('post_likes', function (Blueprint $table) {
             $table->primary(['post_id', 'foodie_username']);
             $table->unsignedBigInteger('post_id');
             $table->string('foodie_username');
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('likes');
+        Schema::dropIfExists('post_likes');
     }
 };
