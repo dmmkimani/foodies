@@ -23,24 +23,5 @@ class DatabaseSeeder extends Seeder
         $this->call(PostsTableSeeder::class);
         $this->call(CommentsTableSeeder::class);
         $this->call(LikesTableSeeder::class);
-        
-        DatabaseSeeder::getRestaurantRatings();
-        DatabaseSeeder::getPostLikes();
-    }
-
-    public function getRestaurantRatings()
-    {
-        for ($i = 1; $i <= Restaurant::count(); $i++) {
-            $avg_rating = Post::get()->where('restaurant_id', $i)->avg('rating');
-            Restaurant::where('id', $i)->update(['rating' => $avg_rating]);
-        }
-    }
-
-    public function getPostLikes()
-    {
-        for ($i = 1; $i <= Post::count(); $i++) {
-            $num_likes = Like::get()->where('post_id', $i)->count();
-            Post::where('id', $i)->update(['likes' => $num_likes]);
-        }
     }
 }

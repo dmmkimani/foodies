@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('closing_time')->nullable();
             $table->string('telephone_number')->unique();
             $table->string('website')->nullable()->unique();
-            $table->double('rating', 8, 2)->nullable();
             $table->timestamps();
         });
     }

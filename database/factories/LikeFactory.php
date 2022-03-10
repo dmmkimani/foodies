@@ -20,17 +20,7 @@ class LikeFactory extends Factory
     {
         return [
             'post_id' => $this->faker->numberBetween(1, Post::count()),
-            'foodie_username' => LikeFactory::randomFoodie(),
+            'foodie_username' => Foodie::randomFoodie(),
         ];
-    }
-
-    public function randomFoodie() 
-    {
-        $foodies_list = [];
-        $foodies = Foodie::get();
-        foreach($foodies as $foodie) {
-            $foodies_list[] = $foodie->username;
-        }
-        return $foodies_list[array_rand($foodies_list)];
     }
 }

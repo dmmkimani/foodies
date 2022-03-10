@@ -23,4 +23,14 @@ class Foodie extends Model
     public function comments() {
         return $this->hasMany(Comment::class);
     }
+
+    public static function randomFoodie() 
+    {
+        $foodies_list = [];
+        $foodies = Foodie::get();
+        foreach($foodies as $foodie) {
+            $foodies_list[] = $foodie->username;
+        }
+        return $foodies_list[array_rand($foodies_list)];
+    }
 }

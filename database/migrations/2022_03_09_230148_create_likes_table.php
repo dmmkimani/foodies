@@ -14,12 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('likes', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->primary(['post_id', 'foodie_username']);
             $table->unsignedBigInteger('post_id');
             $table->string('foodie_username');
             $table->timestamps();
-
-            $table->unique(['post_id', 'foodie_username']);
             
             $table->foreign('post_id')->references('id')
                 ->on('posts')
