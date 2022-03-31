@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('cover_image')->nullable();
             $table->string('profile_picture')->nullable();
-            $table->string('fName')->nullable();
-            $table->string('lName')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@ class PostLikesTableSeeder extends Seeder
      */
     public function run()
     {   
-        $username_list = Foodie::getUsernames();
+        $username_list = Foodie::getAllUsernames();
         for ($i = 1; $i < Post::count(); $i++) {
             shuffle($username_list);
             for ($j = 0; $j < rand(0, 100); $j++) {

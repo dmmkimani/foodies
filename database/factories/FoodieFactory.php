@@ -19,8 +19,8 @@ class FoodieFactory extends Factory
         return [
             'email_address' => $this->faker->unique()->email(),
             'username' => $this->faker->unique()->userName(),
-            'fName' => $this->faker->firstName(),
-            'lName' => $this->faker->lastName(),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
         ];
     }
 }

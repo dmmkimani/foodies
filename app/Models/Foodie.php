@@ -28,7 +28,7 @@ class Foodie extends Model
         return $this->hasMany(CommentLike::class);
     }
 
-    public static function getUsernames()
+    public static function getAllUsernames()
     {
         $username_list = [];
         $foodies = Foodie::get();
@@ -37,11 +37,5 @@ class Foodie extends Model
         }
         
         return $username_list;
-    }
-    
-    public static function randomFoodie() 
-    {
-        $username_list = Foodie::getUsernames();
-        return $username_list[array_rand($username_list)];
     }
 }

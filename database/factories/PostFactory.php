@@ -19,8 +19,8 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'foodie_username' => Foodie::randomFoodie(),
-            'restaurant_id' => $this->faker->numberBetween(1, Restaurant::count()),
+            'foodie_username' => Foodie::all()->random()->username,
+            'restaurant_id' => Restaurant::all()->random()->id,
             'meal_picture' => $this->faker->image('/tmp'),
             'price' => $this->faker->randomFloat(2, 5, 40),
             'rating' => 0.5 * $this->faker->numberBetween(0, 10),

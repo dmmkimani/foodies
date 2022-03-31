@@ -19,7 +19,7 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'foodie_username' => Foodie::randomFoodie(),
+            'foodie_username' => Foodie::all()->random()->username,
             'post_id' => $this->faker->numberBetween(1, Post::count()),
             'comment' => $this->faker->realText($this->faker->numberBetween(10, 200)),
         ];
