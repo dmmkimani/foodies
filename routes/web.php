@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/posts', [PostController::class, 'index']);
+
+Route::get('/restaurants/{id}', [RestaurantController::class, 'show'])
+    ->name('restaurants.show');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
