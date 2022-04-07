@@ -34,13 +34,30 @@
             text-align: start;
         }
 
-        #about {
+        #description {
             background-color: #eeeeee;
             padding: 20px;
         }
 
         div {
             margin-bottom: 15px;
+        }
+        
+        div.post_picture, div.profile_picture {
+            margin: auto;
+            margin-bottom: 5px;
+        }
+
+        div.post_picture {
+            width:500px;
+            height:300px;
+            border:1px solid #000;
+        }
+
+        div.profile_picture {
+            width:350px;
+            height:250px;
+            border:1px solid #000;
         }
 
         h1 {
@@ -57,12 +74,20 @@
         h3 {
             font-size: 20px;
             font-weight: bold;
-            color: black;
+            color: grey;
+        }
+
+        h2.name, h3.username {
+            text-align: center;
         }
 
         h4 {
             font-weight: bold;
             color: black;
+        }
+
+        h4.url {
+            color: blue;
         }
 
         h5 {
@@ -94,7 +119,11 @@
 
 <body>
     <div id="header">
-        <h1>Foodies</h1>
+        <h1>
+            <a href="{{route('home')}}">
+                Foodies
+            </a>
+        </h1>
     </div>
     <div id="content">
         @yield('content')

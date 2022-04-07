@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('foodies', function (Blueprint $table) {
-            $table->string('email_address')->primary();
-            $table->string('username')->unique();
-            $table->string('cover_image')->nullable();
+            $table->string('username')->primary();
+            $table->string('email_address')->unique();
             $table->string('profile_picture')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
+            $table->text('bio')->nullable();
             $table->timestamps();
         });
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FoodieController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RestaurantController;
 use Illuminate\Support\Facades\Route;
@@ -15,12 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::redirect('/', '/posts')
+    ->name('home');
 
 Route::get('/posts', [PostController::class, 'index']);
+
+Route::get('/foodies/{username}', [FoodieController::class, 'show'])
+    ->name('foodies.show');
 
 Route::get('/restaurants/{id}', [RestaurantController::class, 'show'])
     ->name('restaurants.show');

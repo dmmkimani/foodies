@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
-use App\Models\Restaurant;
+use App\Models\Foodie;
 use Illuminate\Http\Request;
 
-class RestaurantController extends Controller
+class FoodieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,14 +41,13 @@ class RestaurantController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $username
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($username)
     {
-        $restaurant = Restaurant::FindOrFail($id);
-        $rating = $restaurant->posts->avg('rating');
-        return view('restaurants.show', ['restaurant'=>$restaurant, 'rating'=>round($rating)]);
+        $foodie = Foodie::FindOrFail($username);
+        return view('foodies.show', ['foodie'=>$foodie]);
     }
 
     /**

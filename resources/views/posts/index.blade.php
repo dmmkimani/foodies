@@ -12,7 +12,7 @@
             </h2>
             <h3>{{$post->restaurant->address}}</h3>
         </div>
-        <div style="width:500px;height:300px;border:1px solid #000;"></div>
+        <div class="post_picture"></div>
         <div>
             <h4>&#163 {{$post->price}}</h4>
 
@@ -26,7 +26,10 @@
 
             <p>{{$post->review}}</p>
         </div>
-        <h5>Posted By: {{$post->foodie->first_name}} {{$post->foodie->last_name}}</h5>
+        <h5>
+            <a href="{{route('foodies.show', ['username'=>$post->foodie_username])}}">
+                Posted By: {{$post->foodie->first_name}} {{$post->foodie->last_name}}</h5>
+            </a>
         <button type="button" class="collapsible">View Comments</button>
     </div>
     @endforeach

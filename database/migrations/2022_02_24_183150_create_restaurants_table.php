@@ -18,8 +18,6 @@ return new class extends Migration
             $table->string('name');
             $table->text('about')->nullable();
             $table->string('address')->unique();
-            $table->string('opening_time')->nullable();
-            $table->string('closing_time')->nullable();
             $table->string('telephone_number')->unique();
             $table->string('website')->nullable()->unique();
             $table->timestamps();

@@ -17,10 +17,11 @@ class FoodieFactory extends Factory
     public function definition()
     {
         return [
-            'email_address' => $this->faker->unique()->email(),
             'username' => $this->faker->unique()->userName(),
+            'email_address' => $this->faker->unique()->email(),
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
+            'bio' => $this->faker->realText($this->faker->numberBetween(200, 400)),
         ];
     }
 }
