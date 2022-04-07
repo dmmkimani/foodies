@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('restaurants', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('about')->nullable();
+            $table->text('about')->nullable();
             $table->string('address')->unique();
             $table->string('opening_time')->nullable();
             $table->string('closing_time')->nullable();
