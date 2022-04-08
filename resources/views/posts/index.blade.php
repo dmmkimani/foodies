@@ -34,4 +34,7 @@
     </div>
     @endforeach
 </ul>
+<span>
+    {{$posts->links()}}
+</span>
 @endsection

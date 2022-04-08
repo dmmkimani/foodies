@@ -20,6 +20,8 @@
 
     <style>
         #header {
+            position: sticky;
+            top: 0;
             background-color: black;
             color: white;
             text-align: center;

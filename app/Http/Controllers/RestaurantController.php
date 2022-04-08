@@ -48,8 +48,9 @@ class RestaurantController extends Controller
     public function show($id)
     {
         $restaurant = Restaurant::FindOrFail($id);
+        $posts = $restaurant->posts;
         $rating = $restaurant->posts->avg('rating');
-        return view('restaurants.show', ['restaurant'=>$restaurant, 'rating'=>round($rating)]);
+        return view('restaurants.show', ['restaurant'=>$restaurant, 'rating'=>round($rating), 'posts'=>$posts]);
     }
 
     /**
