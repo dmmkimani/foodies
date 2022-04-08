@@ -24,6 +24,9 @@ Route::get('/posts', [PostController::class, 'index']);
 Route::get('/foodies/{username}', [FoodieController::class, 'show'])
     ->name('foodies.show');
 
+Route::get('/restaurants', [RestaurantController::class, 'index'])
+    ->name('restaurants.index');
+
 Route::get('/restaurants/{id}', [RestaurantController::class, 'show'])
     ->name('restaurants.show');
 

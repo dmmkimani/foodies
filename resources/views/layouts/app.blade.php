@@ -45,25 +45,56 @@
             margin-bottom: 15px;
         }
         
-        div.post_picture, div.profile_picture {
+        div.restaurant {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        div.rating {
+            margin-top: 10px;
+            text-align: center; 
+            font-size: 30px
+        }
+
+        div.post_picture,
+        div.profile_picture {
             margin: auto;
             margin-bottom: 5px;
         }
 
         div.post_picture {
-            width:500px;
-            height:300px;
-            border:1px solid #000;
+            width: 500px;
+            height: 300px;
+            border: 1px solid #000;
         }
 
         div.profile_picture {
-            width:350px;
-            height:250px;
-            border:1px solid #000;
+            width: 350px;
+            height: 250px;
+            border: 1px solid #000;
+        }
+
+        ul.nav {
+            padding-left: 0px;
+            text-align: center;
+        }
+
+        ul.nav>li {
+            display: inline-block;
+            padding: 10px 20px;
+        }
+
+        ul.nav>li>h2>a {
+            color: white;
+        }
+
+        ul.nav>li:hover, ul.nav>li>h2>a:hover {
+            color: black;
+            background-color: green;
         }
 
         h1 {
-            font-size: 50px;
+            font-size: 60px;
             font-weight: bold;
         }
 
@@ -73,13 +104,18 @@
             color: green;
         }
 
+        h2.nav {
+            color: white;
+        }
+
         h3 {
             font-size: 20px;
             font-weight: bold;
             color: grey;
         }
 
-        h2.name, h3.username {
+        h2.name,
+        h3.username {
             text-align: center;
         }
 
@@ -121,11 +157,26 @@
 
 <body>
     <div id="header">
-        <h1>
-            <a href="{{route('home')}}">
-                Foodies
-            </a>
-        </h1>
+        <h1>Foodies</h1>
+        <ul class="nav">
+            <li>
+                <h2 class="nav">
+                    <a href="{{route('home')}}">
+                        Home
+                    </a>
+                </h2>
+            </li>
+            <li>
+                <h2 class="nav">
+                    <a href="{{route('restaurants.index')}}">
+                        Restaurants
+                    </a>
+                </h2>
+            </li>
+            <li>
+                <h2 class="nav">Your Profile</h2>
+            </li>
+        </ul>
     </div>
     <div id="content">
         @yield('content')

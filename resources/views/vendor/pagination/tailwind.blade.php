@@ -22,7 +22,7 @@
         @endif
     </div>
 
-    <div>
+    <div style="margin: auto; text-align:center">
         <span class="relative z-0 inline-flex shadow-sm rounded-md">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
