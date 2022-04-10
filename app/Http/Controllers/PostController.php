@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -25,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -36,7 +37,30 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'restaurant_name' => 'required|max:255|exists:restaurants,name',
+            'meal_picture' => 'required|mimes:jpg,jpeg,png',
+            'price' => 'required|min:0',
+            'review' => 'required|max:500',
+            'rating' => 'required|integer|min:0|max:5'
+        ]);
+        
+        $p = new Post();
+
+        // REALLY NEED TO CHANGE THIS
+        $p->foodie_username = 'zella45';
+        // REALLY NEED TO CHANGE THIS
+        
+        $p->restaurant_id = Restaurant::getId($validatedData['restaurant_name']);
+        $p->meal_picture = $validatedData['meal_picture'];
+        $p->price = $validatedData['price'];
+        $p->rating = $validatedData['rating'];
+        $p->review = $validatedData['review'];
+        $p->save();
+
+        session()->flash('message', 'Your Review Has Been Posted!');
+
+        return redirect()->route('posts.index');
     }
 
     /**

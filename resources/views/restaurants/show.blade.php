@@ -17,6 +17,9 @@
 
                 <h3>{{$restaurant->posts->count()}} Reviews</h3>
     </div>
+    <div>
+        <a href="{{route('posts.create')}}" class="button new_review" class="button new_review">Write a Review</a>
+    </div>
 </div>
 <div id="description">
     <h3>About:</h3>

@@ -2,6 +2,12 @@
 
 @section('content')
 
+<div>
+    <a href="{{route('posts.create')}}" class="button new_review">Write a Review</a>
+</div>
+
+<hr class="rounded" style="margin-bottom: 10px;">
+
 @foreach ($posts as $post)
 <div>
     <div>

@@ -17,9 +17,9 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('foodie_username');
             $table->unsignedBigInteger('restaurant_id');
-            $table->string('meal_picture');
+            $table->binary('meal_picture');
             $table->double('price', 8, 2);
-            $table->double('rating', 8, 2);
+            $table->integer('rating');
             $table->text('review');
             $table->timestamps();
 

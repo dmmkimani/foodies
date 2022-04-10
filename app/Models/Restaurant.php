@@ -12,4 +12,12 @@ class Restaurant extends Model
     public function posts() {
         return $this->hasMany(Post::class);
     }
+
+    public static function getId(String $name) {
+        $restaurants = Restaurant::get()->where('name', $name);
+
+        foreach($restaurants as $restaurant) {
+            return $restaurant->id;
+        }
+    }
 }

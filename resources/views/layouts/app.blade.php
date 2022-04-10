@@ -44,7 +44,18 @@
         div {
             margin-bottom: 15px;
         }
-        
+
+        div.message {
+            text-align: center;
+            color: green;
+            font-weight: bold;
+        }
+
+        div.error {
+            text-align: center;
+            color: red;
+        }
+
         div.restaurant {
             margin-top: 20px;
             margin-bottom: 20px;
@@ -52,7 +63,7 @@
 
         div.rating {
             margin-top: 10px;
-            text-align: center; 
+            text-align: center;
             font-size: 30px
         }
 
@@ -88,9 +99,27 @@
             color: white;
         }
 
-        ul.nav>li:hover, ul.nav>li>h2>a:hover {
+        ul.nav>li:hover,
+        ul.nav>li>h2>a:hover {
             color: black;
             background-color: green;
+        }
+
+        .new_review {
+            color: white;
+            background-color: green;
+            display: block;
+            padding: 16px 32px;
+            text-align: center;
+            font-size: 18px;
+            margin: auto;
+            transition-duration: 0.5s;
+            cursor: pointer;
+        }
+
+        .new_review:hover {
+            color: black;
+            background-color: lightgreen;
         }
 
         h1 {
@@ -130,6 +159,33 @@
 
         h5 {
             color: grey;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            text-align: center;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        input.price {
+            text-align: center;
+            width: 120px;
+        }
+
+        input.rating {
+            text-align: center;
+            width: 80px;
+        }
+
+        textarea {
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
 
         .checked {
@@ -178,6 +234,21 @@
             </li>
         </ul>
     </div>
+    @if (session('message'))
+    <div class="message">
+        {{session('message')}}
+    </div>
+    @endif
+    @if ($errors->any())
+        <div class="error">
+            ERROR:
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
     <div id="content">
         @yield('content')
     </div>
