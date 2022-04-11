@@ -46,9 +46,8 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Restaurant $restaurant)
     {
-        $restaurant = Restaurant::FindOrFail($id);
         $posts = $restaurant->posts;
         $rating = $restaurant->posts->avg('rating');
         return view('restaurants.show', ['restaurant'=>$restaurant, 'rating'=>round($rating), 'posts'=>$posts]);

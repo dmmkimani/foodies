@@ -26,7 +26,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $restaurants = Restaurant::orderBy('name', 'asc')->get();
+        return view('posts.create', ['restaurants'=>$restaurants]);
     }
 
     /**
@@ -38,7 +39,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'restaurant_name' => 'required|max:255|exists:restaurants,name',
+            'restaurant_id' => 'required|exists:restaurants,id',
             'meal_picture' => 'required|mimes:jpg,jpeg,png',
             'price' => 'required|min:0',
             'review' => 'required|max:500',
@@ -48,19 +49,18 @@ class PostController extends Controller
         $p = new Post();
 
         // REALLY NEED TO CHANGE THIS
-        $p->foodie_username = 'zella45';
+        $p->foodie_username = 'xconroy';
         // REALLY NEED TO CHANGE THIS
         
-        $p->restaurant_id = Restaurant::getId($validatedData['restaurant_name']);
+        $p->restaurant_id = $validatedData['restaurant_id'];
         $p->meal_picture = $validatedData['meal_picture'];
         $p->price = $validatedData['price'];
         $p->rating = $validatedData['rating'];
         $p->review = $validatedData['review'];
         $p->save();
 
-        session()->flash('message', 'Your Review Has Been Posted!');
-
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')
+            ->with('message', 'Your Review Has Been Posted!');
     }
 
     /**
@@ -103,8 +103,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('posts.index')
+            ->with('message', 'Your Review Has Been Deleted');
     }
 }

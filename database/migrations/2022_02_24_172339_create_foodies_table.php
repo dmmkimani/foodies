@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('foodies', function (Blueprint $table) {
             $table->string('username')->primary();
             $table->string('email_address')->unique();
-            $table->string('profile_picture')->nullable();
+            $table->binary('profile_picture')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->text('bio')->nullable();

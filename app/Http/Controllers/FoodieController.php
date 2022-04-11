@@ -44,9 +44,8 @@ class FoodieController extends Controller
      * @param  string  $username
      * @return \Illuminate\Http\Response
      */
-    public function show($username)
+    public function show(Foodie $foodie)
     {
-        $foodie = Foodie::FindOrFail($username);
         return view('foodies.show', ['foodie'=>$foodie]);
     }
 

@@ -25,16 +25,19 @@ Route::get('/posts', [PostController::class, 'index'])
 Route::get('/posts/create', [PostController::class, 'create'])
     ->name('posts.create');
 
-Route::post('/posts', [PostController::class, 'store'])
+Route::post('/posts/', [PostController::class, 'store'])
     ->name('posts.store');
 
-Route::get('/foodies/{username}', [FoodieController::class, 'show'])
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])
+    ->name('posts.destroy');
+
+Route::get('/foodies/{foodie}', [FoodieController::class, 'show'])
     ->name('foodies.show');
 
 Route::get('/restaurants', [RestaurantController::class, 'index'])
     ->name('restaurants.index');
 
-Route::get('/restaurants/{id}', [RestaurantController::class, 'show'])
+Route::get('/restaurants/{restaurant}', [RestaurantController::class, 'show'])
     ->name('restaurants.show');
 
 Route::get('/dashboard', function () {

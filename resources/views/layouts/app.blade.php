@@ -182,6 +182,12 @@
             width: 80px;
         }
 
+        select {
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
         textarea {
             width: 100%;
             margin-top: 10px;
@@ -239,16 +245,6 @@
         {{session('message')}}
     </div>
     @endif
-    @if ($errors->any())
-        <div class="error">
-            ERROR:
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{$error}}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
     <div id="content">
         @yield('content')
     </div>

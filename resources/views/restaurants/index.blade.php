@@ -3,7 +3,7 @@
 @section('content')
 
 @foreach ($restaurants as $restaurant)
-<a href="{{route('restaurants.show', ['id'=>$restaurant->id])}}">
+<a href="{{route('restaurants.show', ['restaurant'=>$restaurant])}}">
     <div class="restaurant">
         <h2>{{$restaurant->name}}</h2>
         @for ($i = 0; $i < round($restaurant->posts->avg('rating')); $i++) <span class="fa fa-star checked"></span>

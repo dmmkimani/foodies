@@ -12,7 +12,7 @@
 <div>
     <div>
         <h2>
-            <a href="{{route('restaurants.show', ['id'=>$post->restaurant_id])}}">
+            <a href="{{route('restaurants.show', ['restaurant'=>$post->restaurant])}}">
                 {{$post->restaurant->name}}
             </a>
         </h2>
@@ -33,7 +33,7 @@
                 <p>{{$post->review}}</p>
     </div>
     <h5>
-        <a href="{{route('foodies.show', ['username'=>$post->foodie_username])}}">
+        <a href="{{route('foodies.show', ['foodie'=>$post->foodie])}}">
             Posted By: {{$post->foodie->first_name}} {{$post->foodie->last_name}}
     </h5>
     </a>
