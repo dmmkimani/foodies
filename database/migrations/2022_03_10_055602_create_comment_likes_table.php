@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('comment_likes', function (Blueprint $table) {
-            $table->primary(['comment_id', 'foodie_username']);
+            $table->primary(['comment_id', 'user_username']);
             $table->unsignedBigInteger('comment_id');
-            $table->string('foodie_username');
+            $table->string('user_username');
             $table->timestamps();
 
             $table->foreign('comment_id')->references('id')
@@ -24,8 +24,8 @@ return new class extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreign('foodie_username')->references('username')
-                ->on('foodies')
+            $table->foreign('user_username')->references('username')
+                ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

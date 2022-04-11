@@ -67,10 +67,14 @@
             font-size: 30px
         }
 
+        img {
+            display: block;
+        }
+
         img.post_picture {
             width: 500;
             height: 375;
-            margin-bottom: 5px;
+            margin-bottom: 7.5px;
         }
 
         img.profile_picture {

@@ -12,14 +12,21 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $primaryKey = 'username';
+    protected $keyType = 'string';
+    
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
+        'profile_picture',
+        'first_name',
+        'last_name',
+        'bio',
         'password',
     ];
 
@@ -41,4 +48,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
+
+    public function postLikes() {
+        return $this->hasMany(PostLike::class);
+    }
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function commentLikes() {
+        return $this->hasMany(CommentLike::class);
+    }
 }

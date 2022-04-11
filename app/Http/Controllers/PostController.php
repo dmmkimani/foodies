@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $restaurants = Restaurant::orderBy('name', 'asc')->get();
+        $restaurants = Restaurant::orderBy('name', 'ASC')->get();
         return view('posts.create', ['restaurants'=>$restaurants]);
     }
 
@@ -45,15 +45,14 @@ class PostController extends Controller
             'review' => 'required|max:500',
             'rating' => 'required|integer|min:0|max:5'
         ]);
+
+        $filename = $request->user()->username.'.'.time();
+        $validatedData['meal_picture']->move(public_path('images'), $filename);
         
         $p = new Post();
-
-        // REALLY NEED TO CHANGE THIS
-        $p->foodie_username = 'xconroy';
-        // REALLY NEED TO CHANGE THIS
-        
+        $p->user_username = $request->user()->username;
         $p->restaurant_id = $validatedData['restaurant_id'];
-        $p->meal_picture = $validatedData['meal_picture'];
+        $p->meal_picture = $filename;
         $p->price = $validatedData['price'];
         $p->rating = $validatedData['rating'];
         $p->review = $validatedData['review'];

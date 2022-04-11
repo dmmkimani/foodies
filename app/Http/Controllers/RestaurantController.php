@@ -15,7 +15,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::paginate(10);
+        $restaurants = Restaurant::orderBy('name', 'ASC')->paginate(10);
         return view('restaurants.index', ['restaurants'=>$restaurants]);
     }
 

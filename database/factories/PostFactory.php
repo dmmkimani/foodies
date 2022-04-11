@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Foodie;
 use App\Models\Restaurant;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,9 +19,9 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'foodie_username' => Foodie::all()->random()->username,
+            'user_username' => User::all()->random()->username,
             'restaurant_id' => Restaurant::all()->random()->id,
-            'meal_picture' => $this->faker->image(storage_path('app/public/images'), 640, 480, null, false),
+            'meal_picture' => $this->faker->image(public_path('images'), 640, 480, null, false),
             'price' => $this->faker->randomFloat(2, 5, 25),
             'rating' => $this->faker->numberBetween(0, 5),
             'review' => $this->faker->realText($this->faker->numberBetween(10, 400)),

@@ -33,10 +33,10 @@
                 <p>{{$post->review}}</p>
     </div>
     <h5>
-        <a href="{{route('foodies.show', ['foodie'=>$post->foodie])}}">
-            Posted By: {{$post->foodie->first_name}} {{$post->foodie->last_name}}
+        <a href="{{route('users.show', ['user'=>$post->user])}}">
+            Posted By: {{$post->user->username}}
+        </a>
     </h5>
-    </a>
     <button type="button" class="collapsible">View Comments</button>
 </div>
 @endforeach

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('foodie_username');
+            $table->string('user_username');
             $table->unsignedBigInteger('restaurant_id');
             $table->string('meal_picture');
             $table->double('price', 8, 2);
@@ -23,10 +23,10 @@ return new class extends Migration
             $table->text('review');
             $table->timestamps();
 
-            $table->unique(['id', 'foodie_username']);
+            $table->unique(['id', 'user_username']);
 
-            $table->foreign('foodie_username')->references('username')
-                ->on('foodies')
+            $table->foreign('user_username')->references('username')
+                ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
