@@ -18,7 +18,7 @@
         </h2>
         <h3>{{$post->restaurant->address}}</h3>
     </div>
-    <div class="post_picture"></div>
+    <img class="post_picture" src="{{route('images.show', ['filename'=>$post->meal_picture])}}">
     <div>
         <h4>&#163 {{$post->price}}</h4>
 

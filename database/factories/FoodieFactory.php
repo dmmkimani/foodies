@@ -19,6 +19,7 @@ class FoodieFactory extends Factory
         return [
             'username' => $this->faker->unique()->userName(),
             'email_address' => $this->faker->unique()->email(),
+            'profile_picture' => $this->faker->image(storage_path('app/public/images'), 640, 480, null, false),
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
             'bio' => $this->faker->realText($this->faker->numberBetween(200, 400)),

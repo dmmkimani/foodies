@@ -3,7 +3,7 @@
 @section('content')
 <div>
     @if ($foodie->profile_picture)
-    <div class="profile_picture"></div>
+    <img class="profile_picture" src="{{route('images.show', ['filename'=>$foodie->profile_picture])}}">
     @endif
     <h2 class="name" style="margin-top:10px;">
         @if ($foodie->first_name)

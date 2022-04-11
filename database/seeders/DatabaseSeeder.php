@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RestaurantsTableSeeder::class);
         $this->call(PostsTableSeeder::class);
         $this->call(CommentsTableSeeder::class);
-        $this->call(PostLikesTableSeeder::class);
-        $this->call(CommentLikesTableSeeder::class);
+        // $this->call(PostLikesTableSeeder::class);
+        // $this->call(CommentLikesTableSeeder::class);
     }
 }

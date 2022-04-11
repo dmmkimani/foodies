@@ -21,7 +21,7 @@ class PostFactory extends Factory
         return [
             'foodie_username' => Foodie::all()->random()->username,
             'restaurant_id' => Restaurant::all()->random()->id,
-            'meal_picture' => $this->faker->image('/tmp'),
+            'meal_picture' => $this->faker->image(storage_path('app/public/images'), 640, 480, null, false),
             'price' => $this->faker->randomFloat(2, 5, 25),
             'rating' => $this->faker->numberBetween(0, 5),
             'review' => $this->faker->realText($this->faker->numberBetween(10, 400)),

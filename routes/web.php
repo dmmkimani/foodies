@@ -40,6 +40,11 @@ Route::get('/restaurants', [RestaurantController::class, 'index'])
 Route::get('/restaurants/{restaurant}', [RestaurantController::class, 'show'])
     ->name('restaurants.show');
 
+Route::get('/storage/{filename}', function ($filename) {
+    $path = storage_path('app/public/images/').$filename;
+    return readfile($path);
+})->name('images.show');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

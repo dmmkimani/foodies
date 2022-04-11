@@ -67,22 +67,17 @@
             font-size: 30px
         }
 
-        div.post_picture,
-        div.profile_picture {
-            margin: auto;
+        img.post_picture {
+            width: 500;
+            height: 375;
             margin-bottom: 5px;
         }
 
-        div.post_picture {
-            width: 500px;
-            height: 300px;
-            border: 1px solid #000;
-        }
-
-        div.profile_picture {
-            width: 350px;
-            height: 250px;
-            border: 1px solid #000;
+        img.profile_picture {
+            margin: auto;
+            width: 340px;
+            height: 255px;
+            margin-bottom: 10px;
         }
 
         ul.nav {
