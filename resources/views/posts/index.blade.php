@@ -3,7 +3,7 @@
 @section('content')
 
 <div>
-    <a href="{{route('posts.create')}}" class="button new_review">Write a Review</a>
+    <a href="{{route('posts.create')}}" class="button review">Write a Review</a>
 </div>
 
 <hr class="rounded" style="margin-bottom: 10px;">
@@ -32,13 +32,28 @@
 
                 <p>{{$post->review}}</p>
     </div>
+    @isset ($user)
+    @if ($user->username == $post->user->username)
+    <div>
+        <a href="{{route('posts.edit', ['post'=>$post])}}" class="button review">Amend Review</a>
+    </div>
+    @else
     <h5>
         <a href="{{route('users.show', ['user'=>$post->user])}}">
             Posted By: {{$post->user->username}}
         </a>
     </h5>
+    @endif
+    @else
+    <h5>
+        <a href="{{route('users.show', ['user'=>$post->user])}}">
+            Posted By: {{$post->user->username}}
+        </a>
+    </h5>
+    @endisset
     <button type="button" class="collapsible">View Comments</button>
 </div>
+<hr class="rounded" style="margin-bottom: 10px;">
 @endforeach
 <span>
     {{$posts->links()}}

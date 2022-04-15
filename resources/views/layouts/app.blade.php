@@ -104,23 +104,6 @@
             background-color: green;
         }
 
-        .new_review {
-            color: white;
-            background-color: green;
-            display: block;
-            padding: 16px 32px;
-            text-align: center;
-            font-size: 18px;
-            margin: auto;
-            transition-duration: 0.5s;
-            cursor: pointer;
-        }
-
-        .new_review:hover {
-            color: black;
-            background-color: lightgreen;
-        }
-
         h1 {
             font-size: 60px;
             font-weight: bold;
@@ -179,6 +162,23 @@
         input.rating {
             text-align: center;
             width: 80px;
+        }
+
+        .review {
+            color: white;
+            background-color: green;
+            display: block;
+            padding: 16px 32px;
+            text-align: center;
+            font-size: 18px;
+            margin: auto;
+            transition-duration: 0.5s;
+            cursor: pointer;
+        }
+
+        .review:hover {
+            color: black;
+            background-color: lightgreen;
         }
 
         select {

@@ -16,7 +16,12 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::orderBy('created_at', 'DESC')->paginate(15);
-        return view('posts.index', ['posts'=>$posts]);
+        if (auth()->user()) {
+            $user = auth()->user();
+            return view('posts.index', ['posts'=>$posts, 'user'=>$user]);
+        } else {
+            return view('posts.index', ['posts'=>$posts]);
+        }
     }
 
     /**
@@ -79,9 +84,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        $restaurants = Restaurant::orderBy('name', 'ASC')->get();
+        return view('posts.edit', ['post'=>$post, 'restaurants'=>$restaurants]);
     }
 
     /**
@@ -91,9 +97,24 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $validatedData = $request->validate([
+            'restaurant_id' => 'required|exists:restaurants,id',
+            'price' => 'required|min:0',
+            'review' => 'required|max:500',
+            'rating' => 'required|integer|min:0|max:5'
+        ]);
+
+        Post::where('id', $post->id)->update([
+            'restaurant_id' => $validatedData['restaurant_id'],
+            'price' => $validatedData['price'],
+            'rating' => $validatedData['rating'],
+            'review' => $validatedData['review']
+        ]);
+
+        return redirect()->route('posts.index')
+            ->with('message', 'Your Review Has Been Amended!');
     }
 
     /**
