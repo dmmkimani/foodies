@@ -235,7 +235,17 @@
                 </h2>
             </li>
             <li>
-                <h2 class="nav">Your Profile</h2>
+                <h2 class="nav">
+                    @if (auth()->user())
+                        <a href="{{route('users.show', ['user'=>auth()->user()])}}">
+                            Your Profile
+                        </a>
+                    @else
+                        <a href="{{route('login', ['user'=>auth()->user()])}}">
+                            Sign In
+                        </a>
+                    @endif
+                </h2>
             </li>
         </ul>
     </div>

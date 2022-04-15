@@ -15,6 +15,19 @@
     </h2>
     <h3 class="username" style="margin-bottom:15px;">{{$user->username}}</h3>
 </div>
+@if (auth()->user())
+@if ($user->username == auth()->user()->username)
+<div>
+    <a href="{{route('users.edit', ['user'=>$user])}}" class="button review">Edit Profile</a>
+</div>
+<form method="POST" action="{{route('logout')}}">
+    @csrf
+    <div>
+        <input class="button review" type="submit" style="background-color: red;" value="Logout">
+    </div>
+</form>
+@endif
+@endif
 @if ($user->bio)
 <div id="description">
     <h3>Bio:</h3>

@@ -40,6 +40,9 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])
 Route::get('/users/{user}', [UserController::class, 'show'])
     ->name('users.show');
 
+Route::get('/users/{user}/edit', [UserController::class, 'edot'])
+    ->name('users.edit');
+
 Route::get('/restaurants', [RestaurantController::class, 'index'])
     ->name('restaurants.index');
 

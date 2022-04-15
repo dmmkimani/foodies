@@ -47,7 +47,7 @@ class PostController extends Controller
             'restaurant_id' => 'required|exists:restaurants,id',
             'meal_picture' => 'required|mimes:jpg,jpeg,png',
             'price' => 'required|min:0',
-            'review' => 'required|max:500',
+            'review' => 'required|string|max:500',
             'rating' => 'required|integer|min:0|max:5'
         ]);
 
@@ -81,7 +81,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Post  $post
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
@@ -94,7 +94,7 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Post  $post
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Post $post)
