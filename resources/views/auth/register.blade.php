@@ -26,20 +26,6 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
-            <!-- First Name -->
-            <div class="mt-4">
-                <x-label for="first_name" :value="__('First Name')" />
-
-                <x-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required />
-            </div>
-            
-            <!-- Last Name -->
-            <div class="mt-4">
-                <x-label for="last_name" :value="__('Last Name')" />
-
-                <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required />
-            </div>
-
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
