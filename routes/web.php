@@ -26,22 +26,22 @@ Route::get('/posts/create', [PostController::class, 'create'])
     ->middleware(['auth'])->name('posts.create');
 
 Route::post('/posts/', [PostController::class, 'store'])
-    ->name('posts.store');
+    ->middleware(['auth'])->name('posts.store');
 
 Route::get('/posts/{post}/edit', [PostController::class, 'edit'])
-    ->name('posts.edit');
+    ->middleware(['auth'])->name('posts.edit');
 
 Route::put('/posts/{post}', [PostController::class, 'update'])
-    ->name('posts.update');
+    ->middleware(['auth'])->name('posts.update');
 
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])
-    ->name('posts.destroy');
+    ->middleware(['auth'])->name('posts.destroy');
 
 Route::get('/users/{user}', [UserController::class, 'show'])
     ->name('users.show');
 
 Route::get('/users/{user}/edit', [UserController::class, 'edot'])
-    ->name('users.edit');
+    ->middleware(['auth'])->name('users.edit');
 
 Route::get('/restaurants', [RestaurantController::class, 'index'])
     ->name('restaurants.index');
