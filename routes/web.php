@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RestaurantController;
@@ -28,6 +29,9 @@ Route::get('/posts/create', [PostController::class, 'create'])
 Route::post('/posts/', [PostController::class, 'store'])
     ->middleware(['auth'])->name('posts.store');
 
+Route::get('/posts/{post}', [PostController::class, 'show'])
+    ->name('posts.show');
+
 Route::get('/posts/{post}/edit', [PostController::class, 'edit'])
     ->middleware(['auth'])->name('posts.edit');
 
@@ -40,7 +44,7 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])
 Route::get('/users/{user}', [UserController::class, 'show'])
     ->name('users.show');
 
-Route::get('/users/{user}/edit', [UserController::class, 'edot'])
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])
     ->middleware(['auth'])->name('users.edit');
 
 Route::get('/restaurants', [RestaurantController::class, 'index'])
@@ -48,6 +52,12 @@ Route::get('/restaurants', [RestaurantController::class, 'index'])
 
 Route::get('/restaurants/{restaurant}', [RestaurantController::class, 'show'])
     ->name('restaurants.show');
+
+Route::post('/comments/', [CommentController::class, 'apiStore'])
+    ->middleware(['auth'])->name('api.comments.store');
+
+Route::get('/comments/{post}', [CommentController::class, 'apiShow'])
+    ->name('api.comments.show');
 
 Route::get('/storage/{filename}', function ($filename) {
     $path = public_path('images/').$filename;

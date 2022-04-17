@@ -70,12 +70,17 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        if (auth()->user()) {
+            $user = auth()->user();
+            return view('posts.show', ['post'=>$post, 'user'=>$user]);
+        } else {
+            return view('posts.show', ['post'=>$post]);
+        }
     }
 
     /**

@@ -50,13 +50,6 @@
     <div>
         <input class="button review" type="submit" value="Amend">
     </div>
-    <form method="POST" action="{{route('posts.destroy', ['post'=>$post])}}">
-        @csrf
-        @method('DELETE')
-        <div>
-            <input class="button review" type="submit" style="background-color: red;" value="Delete">
-        </div>
-    </form>
     <div style="text-align:center">
         <a href="{{route('posts.index')}}">Cancel</a>
     </div>

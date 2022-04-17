@@ -148,8 +148,8 @@
         }
 
         input {
-            text-align: center;
             width: 100%;
+            text-align: center;
             margin-top: 10px;
             margin-bottom: 10px;
         }
@@ -162,6 +162,11 @@
         input.rating {
             text-align: center;
             width: 80px;
+        }
+
+        input.newComment {
+            width: 85%;
+            text-align: left;
         }
 
         .review {
@@ -195,23 +200,6 @@
 
         .checked {
             color: gold;
-        }
-
-        .collapsible {
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .collapsible::after {
-            content: '+';
-            color: black;
-            margin-left: 5px;
-        }
-
-        .active::after {
-            content: '-';
-            color: black;
-            margin-left: 5px;
         }
     </style>
 </head>

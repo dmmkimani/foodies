@@ -3,13 +3,6 @@
 @section('content')
 
 <div>
-    <a href="{{route('posts.create')}}" class="button review">Write a Review</a>
-</div>
-
-<hr class="rounded" style="margin-bottom: 10px;">
-
-@foreach ($posts as $post)
-<div>
     <div>
         <h2>
             <a href="{{route('restaurants.show', ['restaurant'=>$post->restaurant])}}">
@@ -59,12 +52,8 @@
     </h5>
     @endisset
 </div>
-<a href="{{route('posts.show', ['post'=>$post])}}">
-    View Comments
-</a>
-<hr class="rounded" style="margin-top:10px; margin-bottom: 10px;">
-@endforeach
-<span>
-    {{$posts->links()}}
-</span>
+<hr class="rounded" style="margin-bottom: 10px;">
+<div>
+    @include('comments.index', ['post'=>$post])
+</div>
 @endsection
