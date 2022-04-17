@@ -10,8 +10,11 @@ class CommentController extends Controller
 {
     public function apiShow(Post $post) 
     {
-        $comments = $post->comments;
-        return $comments;
+        $response = [
+            $post->id,
+            $post->comments
+        ];
+        return $response;
     }
 
     public function apiStore(Request $request)

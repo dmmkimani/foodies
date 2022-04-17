@@ -22,6 +22,7 @@
         const Comment = {
             data() {
                 return {
+                    post_id: null,
                     comments: [],
                     newComment: "",
                     errorMessage: "",
@@ -30,7 +31,7 @@
             methods: {
                 createComment() {
                     axios.post("{{route('api.comments.store')}}", {
-                        post_id: this.comments[0].post_id,
+                        post_id: this.post_id,
                         comment: this.newComment
                     }).then(response => {
                         this.comments.push(response.data);
@@ -45,7 +46,8 @@
             mounted() {
                 axios.get("{{route('api.comments.show', ['post'=>$post])}}")
                     .then(response => {
-                        this.comments = response.data;
+                        this.post_id = response.data[0];
+                        this.comments = response.data[1];
                     })
                     .catch(response => {
                         console.log(response);
