@@ -17,7 +17,10 @@
         <button @click="createComment" style="margin-left: 30px;">Post</button>
         <p style="text-align: center; color: red">@{{errorMessage}}</p>
         <div v-for="(comment, index) in comments" :key="comment.id">
-            <h5>@{{comment.user_username}}</h5>
+            <h5><a v-bind:href="'/users/' + comment.user_username">
+                    @{{comment.user_username}}
+                </a>
+            </h5>
             <p>@{{comment.comment}}</p>
             <div v-if="comment.user_username == user_username">
                 <button style="margin-right: 5px; color: green">Edit</button>

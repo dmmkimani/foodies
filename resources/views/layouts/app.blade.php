@@ -14,9 +14,11 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
     <style>
         #header {
@@ -46,6 +48,7 @@
         }
 
         div.message {
+            font-size: 18px;
             text-align: center;
             color: green;
             font-weight: bold;
@@ -54,6 +57,7 @@
         div.error {
             text-align: center;
             color: red;
+            font-weight: bold;
         }
 
         div.restaurant {
@@ -65,6 +69,11 @@
             margin-top: 10px;
             text-align: center;
             font-size: 30px
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
         }
 
         img {
@@ -82,11 +91,6 @@
             width: 340px;
             height: 255px;
             margin-bottom: 10px;
-        }
-
-        ul.nav {
-            padding-left: 0px;
-            text-align: center;
         }
 
         ul.nav>li {
@@ -109,14 +113,11 @@
             font-weight: bold;
         }
 
-        h2 {
+        h2,
+        h2>a {
             font-size: 30px;
             font-weight: bold;
             color: green;
-        }
-
-        h2.nav {
-            color: white;
         }
 
         h3 {
@@ -131,7 +132,9 @@
         }
 
         h4 {
-            font-weight: bold;
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: 600;
             color: black;
         }
 
@@ -139,7 +142,9 @@
             color: blue;
         }
 
-        h5 {
+        h5,
+        h5>a {
+            font-size: 16px;
             color: grey;
         }
 
@@ -169,23 +174,6 @@
             text-align: left;
         }
 
-        .review {
-            color: white;
-            background-color: green;
-            display: block;
-            padding: 16px 32px;
-            text-align: center;
-            font-size: 18px;
-            margin: auto;
-            transition-duration: 0.5s;
-            cursor: pointer;
-        }
-
-        .review:hover {
-            color: black;
-            background-color: lightgreen;
-        }
-
         select {
             width: 100%;
             margin-top: 10px;
@@ -198,6 +186,23 @@
             margin-bottom: 10px;
         }
 
+        .default {
+            color: white;
+            background-color: green;
+            display: block;
+            padding: 16px 32px;
+            text-align: center;
+            font-size: 18px;
+            margin: auto;
+            transition-duration: 0.5s;
+            cursor: pointer;
+        }
+
+        .default:hover {
+            color: black;
+            background-color: lightgreen;
+        }
+
         .checked {
             color: gold;
         }
@@ -207,31 +212,31 @@
 <body>
     <div id="header">
         <h1>Foodies</h1>
-        <ul class="nav">
-            <li>
-                <h2 class="nav">
+        <ul class="nav justify-content-center" role="tablist">
+            <li class="active">
+                <h2>
                     <a href="{{route('home')}}">
                         Home
                     </a>
                 </h2>
             </li>
             <li>
-                <h2 class="nav">
+                <h2>
                     <a href="{{route('restaurants.index')}}">
                         Restaurants
                     </a>
                 </h2>
             </li>
             <li>
-                <h2 class="nav">
+                <h2>
                     @if (auth()->user())
-                        <a href="{{route('users.show', ['user'=>auth()->user()])}}">
-                            Your Profile
-                        </a>
+                    <a href="{{route('users.show', ['user'=>auth()->user()])}}">
+                        Your Profile
+                    </a>
                     @else
-                        <a href="{{route('login', ['user'=>auth()->user()])}}">
-                            Sign In
-                        </a>
+                    <a href="{{route('login', ['user'=>auth()->user()])}}">
+                        Sign In
+                    </a>
                     @endif
                 </h2>
             </li>

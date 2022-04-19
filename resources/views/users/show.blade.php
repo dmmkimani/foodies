@@ -18,12 +18,12 @@
 @if (auth()->user())
 @if ($user->username == auth()->user()->username)
 <div>
-    <a href="{{route('users.edit', ['user'=>$user])}}" class="button review">Edit Profile</a>
+    <a href="{{route('users.edit', ['user'=>$user])}}" class="button default">Edit Profile</a>
 </div>
 <form method="POST" action="{{route('logout')}}">
     @csrf
     <div>
-        <input class="button review" type="submit" style="background-color: red;" value="Logout">
+        <input class="button default" type="submit" style="background-color: red;" value="Logout">
     </div>
 </form>
 @endif
@@ -34,8 +34,4 @@
     <p>{{$user->bio}}</p>
 </div>
 @endif
-<div>
-    <h3>Reviews:</h3>
-
-</div>
 @endsection

@@ -18,16 +18,11 @@
                 <h3>{{$restaurant->posts->count()}} Reviews</h3>
     </div>
     <div>
-        <a href="{{route('posts.create')}}" class="button review" class="button new_review">Write a Review</a>
+        <a href="{{route('posts.create')}}" class="button default" class="button new_review">Write a Review</a>
     </div>
 </div>
 <div id="description">
     <h3>About:</h3>
     <p>{{$restaurant->about}}</p>
 </div>
-<div>
-    <h3>Reviews:</h3>
-
-</div>
-
 @endsection

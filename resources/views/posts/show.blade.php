@@ -28,13 +28,13 @@
     @isset ($user)
     @if ($user->username == $post->user->username)
     <div>
-        <a href="{{route('posts.edit', ['post'=>$post])}}" class="button review">Amend Review</a>
+        <a href="{{route('posts.edit', ['post'=>$post])}}" class="button default">Amend Review</a>
     </div>
     <form method="POST" action="{{route('posts.destroy', ['post'=>$post])}}">
         @csrf
         @method('DELETE')
         <div>
-            <input class="button review" type="submit" style="background-color: red;" value="Delete Review">
+            <input class="button default" type="submit" style="background-color: red;" value="Delete Review">
         </div>
     </form>
     @else

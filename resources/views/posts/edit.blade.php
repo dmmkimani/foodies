@@ -48,7 +48,7 @@
         @enderror
     </div>
     <div>
-        <input class="button review" type="submit" value="Amend">
+        <input class="button default" type="submit" value="Amend">
     </div>
     <div style="text-align:center">
         <a href="{{route('posts.index')}}">Cancel</a>
