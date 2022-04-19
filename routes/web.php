@@ -59,6 +59,9 @@ Route::post('/comments/', [CommentController::class, 'apiStore'])
 Route::get('/comments/{post}', [CommentController::class, 'apiShow'])
     ->name('api.comments.show');
 
+Route::delete('/comments/', [CommentController::class, 'apiDestroy'])
+    ->name('api.comments.destroy');
+
 Route::get('/storage/{filename}', function ($filename) {
     $path = public_path('images/').$filename;
     return readfile($path);

@@ -31,6 +31,13 @@ class CommentController extends Controller
 
         return $c;
     }
+
+    public function apiDestroy(Request $request)
+    {
+        $id = $request['comment_id'];
+        Comment::FindOrFail($id)->delete();
+        
+    }
     
     /**
      * Display a listing of the resource.
