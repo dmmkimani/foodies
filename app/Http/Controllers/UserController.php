@@ -55,9 +55,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('users.edit', ['user'=>$user]);
     }
 
     /**
@@ -67,9 +67,46 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $validatedData = $request->validate([
+            'first_name' => 'nullable|string|max:255',
+            'last_name' => 'nullable|string|max:255',
+            'bio' => 'nullable|string|max:500'
+        ]);
+
+        if ($request->filled('first_name')) {
+            User::where('username', $user->username)->update([
+                'first_name' => $validatedData['first_name']
+            ]);
+        } else {
+            User::where('username', $user->username)->update([
+                'first_name' => null
+            ]);
+        }
+
+        if ($request->filled('last_name')) {
+            User::where('username', $user->username)->update([
+                'last_name' => $validatedData['last_name']
+            ]);
+        } else {
+            User::where('username', $user->username)->update([
+                'last_name' => null
+            ]);
+        }
+
+        if ($request->filled('bio')) {
+            User::where('username', $user->username)->update([
+                'bio' => $validatedData['bio']
+            ]);
+        } else {
+            User::where('username', $user->username)->update([
+                'bio' => null
+            ]);
+        }
+
+        return redirect()->route('users.show', ['user'=>$user->username])
+            ->with('message', 'Your Profile Has Been Updated');
     }
 
     /**

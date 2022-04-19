@@ -47,6 +47,9 @@ Route::get('/users/{user}', [UserController::class, 'show'])
 Route::get('/users/{user}/edit', [UserController::class, 'edit'])
     ->middleware(['auth'])->name('users.edit');
 
+Route::put('/users/{user}', [UserController::class, 'update'])
+    ->middleware(['auth'])->name('users.update');
+
 Route::get('/restaurants', [RestaurantController::class, 'index'])
     ->name('restaurants.index');
 
@@ -63,7 +66,7 @@ Route::delete('/comments/', [CommentController::class, 'apiDestroy'])
     ->name('api.comments.destroy');
 
 Route::get('/storage/{filename}', function ($filename) {
-    $path = public_path('images/').$filename;
+    $path = public_path('images/') . $filename;
     return readfile($path);
 })->name('images.show');
 

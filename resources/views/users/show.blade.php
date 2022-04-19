@@ -2,9 +2,6 @@
 
 @section('content')
 <div>
-    @if ($user->profile_picture)
-    <img class="profile_picture" src="{{route('images.show', ['filename'=>$user->profile_picture])}}">
-    @endif
     <h2 class="name" style="margin-top:10px;">
         @if ($user->first_name)
         {{$user->first_name}}
