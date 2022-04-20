@@ -25,7 +25,9 @@
 
                 <p>{{$post->review}}</p>
     </div>
-    @include('likes.show', ['user'=>auth()->user(), 'likeable_type'=>'Post', 'likeable_id'=>$post->id])
+    @if (!$user->admin)
+    @include('likes.show', ['user'=>$user, 'likeable_type'=>'Post', 'likeable_id'=>$post->id])
+    @endif
     @isset ($user)
     @if ($user->username == $post->user->username)
     <div>
@@ -44,6 +46,15 @@
             Posted By: {{$post->user->username}}
         </a>
     </h5>
+    @endif
+    @if ($user->admin)
+    <form method="POST" action="{{route('posts.destroy', ['post'=>$post])}}">
+        @csrf
+        @method('DELETE')
+        <div>
+            <input class="button default" type="submit" style="background-color: red;" value="Delete Review">
+        </div>
+    </form>
     @endif
     @else
     <h5>

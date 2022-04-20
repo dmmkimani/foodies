@@ -119,7 +119,7 @@ class PostController extends Controller
         ]);
 
         return redirect()->route('posts.index')
-            ->with('message', 'Your Review Has Been Amended!');
+            ->with('message', 'Review Successfully Amended');
     }
 
     /**
@@ -133,6 +133,6 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('posts.index')
-            ->with('message', 'Your Review Has Been Deleted');
+            ->with('message', 'Review Successfully Deleted');
     }
 }

@@ -58,7 +58,7 @@
         div.error {
             text-align: center;
             color: red;
-            font-weight: bold;
+            font-weight: 600;
         }
 
         div.restaurant {
@@ -188,6 +188,7 @@
 
         textarea {
             width: 100%;
+            padding: 10px;
             margin-top: 10px;
             margin-bottom: 10px;
         }

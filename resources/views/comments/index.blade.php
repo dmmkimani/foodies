@@ -3,6 +3,7 @@
 
 <head>
     @if (auth()->check())
+    <meta name="admin" content="{{auth()->user()->admin}}">
     <meta name="user_username" content="{{auth()->user()->username}}">
     @endif
 
@@ -13,9 +14,11 @@
 <body>
     <div id="comment">
         <h4>Comments:</h4>
+        <div v-if="admin != true">
         <input type="text" class="newComment" id="newComment" v-model="newComment">
         <button @click="createComment" style="margin-left: 30px;">Post</button>
         <p style="text-align: center; color: red">@{{errorMessage}}</p>
+        </div>
         <div v-for="(comment, index) in comments" :key="comment.id">
             <h5>
                 <a v-bind:href="'/users/' + comment.user_username">
@@ -23,7 +26,7 @@
                 </a>
             </h5>
             <p>@{{comment.comment}}</p>
-            <div v-if="comment.user_username == user_username">
+            <div v-if="comment.user_username == user_username || admin == true">
                 <button @click="deleteComment(index)" style="color: red">Delete</button>
             </div>
         </div>
@@ -33,6 +36,7 @@
         const Comment = {
             data() {
                 return {
+                    admin: document.querySelector("meta[name='admin']").getAttribute('content'),
                     user_username: document.querySelector("meta[name='user_username']").getAttribute('content'),
                     post_id: null,
                     comments: [],

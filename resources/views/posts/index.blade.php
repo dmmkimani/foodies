@@ -2,11 +2,21 @@
 
 @section('content')
 
+@isset($user)
+@if (!$user->admin)
 <div>
     <a href="{{route('posts.create')}}" class="button default">Write a Review</a>
 </div>
 
 <hr class="rounded" style="margin-bottom: 10px;">
+@endif
+@else
+<div>
+    <a href="{{route('posts.create')}}" class="button default">Write a Review</a>
+</div>
+
+<hr class="rounded" style="margin-bottom: 10px;">
+@endisset
 
 @foreach ($posts as $post)
 <div>
@@ -51,6 +61,15 @@
         </a>
     </h5>
     @endif
+    @if ($user->admin)
+    <form method="POST" action="{{route('posts.destroy', ['post'=>$post])}}">
+        @csrf
+        @method('DELETE')
+        <div>
+            <input class="button default" type="submit" style="background-color: red;" value="Delete Review">
+        </div>
+    </form>
+    @endif
     @else
     <h5>
         <a href="{{route('users.show', ['user'=>$post->user])}}">
@@ -60,9 +79,9 @@
     @endisset
 </div>
 <div style="text-align: center;">
-<a href="{{route('posts.show', ['post'=>$post])}}">
-    View Likes and Comments
-</a>
+    <a href="{{route('posts.show', ['post'=>$post])}}">
+        View Likes and Comments
+    </a>
 </div>
 <hr class="rounded" style="margin-top:10px; margin-bottom: 10px;">
 @endforeach

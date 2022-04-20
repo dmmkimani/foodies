@@ -21,9 +21,17 @@
 
                 <h3>{{$restaurant->posts->count()}} Reviews</h3>
     </div>
+    @if (auth()->check())
+    @if (!auth()->user()->admin)
     <div>
         <a href="{{route('posts.create')}}" class="button default" class="button new_review">Write a Review</a>
     </div>
+    @endif
+    @else
+    <div>
+        <a href="{{route('posts.create')}}" class="button default" class="button new_review">Write a Review</a>
+    </div>
+    @endif
 </div>
 <div id="description">
     <h3>About:</h3>
