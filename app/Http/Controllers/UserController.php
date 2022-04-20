@@ -75,35 +75,11 @@ class UserController extends Controller
             'bio' => 'nullable|string|max:500'
         ]);
 
-        if ($request->filled('first_name')) {
-            User::where('username', $user->username)->update([
-                'first_name' => $validatedData['first_name']
-            ]);
-        } else {
-            User::where('username', $user->username)->update([
-                'first_name' => null
-            ]);
-        }
-
-        if ($request->filled('last_name')) {
-            User::where('username', $user->username)->update([
-                'last_name' => $validatedData['last_name']
-            ]);
-        } else {
-            User::where('username', $user->username)->update([
-                'last_name' => null
-            ]);
-        }
-
-        if ($request->filled('bio')) {
-            User::where('username', $user->username)->update([
-                'bio' => $validatedData['bio']
-            ]);
-        } else {
-            User::where('username', $user->username)->update([
-                'bio' => null
-            ]);
-        }
+        User::where('username', $user->username)->update([
+            'first_name' => $request->filled('first_name') ? $validatedData['first_name'] : null,
+            'last_name' => $request->filled('last_name') ? $validatedData['last_name'] : null,
+            'bio' => $request->filled('bio') ? $validatedData['bio'] : null,
+        ]);
 
         return redirect()->route('users.show', ['user'=>$user->username])
             ->with('message', 'Your Profile Has Been Updated');

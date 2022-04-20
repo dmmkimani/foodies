@@ -17,8 +17,8 @@ class Post extends Model
         return $this->belongsTo(Restaurant::class);
     }
 
-    public function postLikes() {
-        return $this->hasMany(PostLike::class);
+    public function likes() {
+        return $this->morphMany(Like::class, 'likeable');
     }
 
     public function comments() {

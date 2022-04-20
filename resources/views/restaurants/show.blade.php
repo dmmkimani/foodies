@@ -5,7 +5,11 @@
     <h2>{{$restaurant->name}}</h2>
     <h3>{{$restaurant->address}}</h3>
     @if ($restaurant->website)
-    <h4 class="url">{{$restaurant->website}}</h4>
+    <h4>
+        <a class="url" href="{{$restaurant->website}}">
+            {{$restaurant->website}}
+        </a> 
+    </h4>
     @endif
     <h4>Telephone Number: {{$restaurant->telephone_number}}</h4>
     <div class="rating">
