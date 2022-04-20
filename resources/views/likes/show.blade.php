@@ -41,6 +41,7 @@
                     }).then(response => {
                         this.likes.push(response.data);
                         this.liked = true;
+                        
                     }).catch(response => {
                         console.log(error.response.data);
                     })

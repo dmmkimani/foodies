@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Post;
+use App\Notifications\CommentPosted;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -11,7 +12,7 @@ class CommentController extends Controller
     public function apiStore(Request $request)
     {
         $validatedData = $request->validate([
-            'comment' => 'required|string|max:75'
+            'comment' => 'required|string|max:300'
         ]);
         
         $c = new Comment();
@@ -19,6 +20,12 @@ class CommentController extends Controller
         $c->post_id = $request['post_id'];
         $c->comment = $validatedData['comment'];
         $c->save();
+
+        CommentController::sendNotification(
+            $c->post,  
+            $c->user_username, 
+            $c->comment
+        );
 
         return $c;
     }
@@ -37,6 +44,11 @@ class CommentController extends Controller
         $id = $request['comment_id'];
         Comment::FindOrFail($id)->delete();
         
+    }
+
+    public function sendNotification(Post $post, String $user_username, String $comment)
+    {
+        $post->user->notify(new CommentPosted($post, $user_username, $comment));
     }
     
     /**

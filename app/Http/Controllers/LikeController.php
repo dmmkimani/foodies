@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Post;
 use App\Models\User;
+use App\Notifications\PostLiked;
 use Illuminate\Http\Request;
 
 class LikeController extends Controller
@@ -17,6 +18,11 @@ class LikeController extends Controller
         $l->likeable_id = $request['likeable_id'];
         $l->likeable_type = "App\Models\\".$request['likeable_type'];
         $l->save();
+        
+        LikeController::sendNotification(
+            $l->likeable,
+            $l->user_username
+        );
 
         return $l;
     }
@@ -50,6 +56,11 @@ class LikeController extends Controller
             ->where('likeable_id', $request['likeable_id'])
             ->where('likeable_type', "App\Models\\".$request['likeable_type'])
             ->delete();
+    }
+
+    public function sendNotification($likeable, String $user_username)
+    {
+        $likeable->user->notify(new PostLiked($likeable, $user_username));
     }
     
     
