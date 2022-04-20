@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RestaurantController;
@@ -64,6 +65,15 @@ Route::get('/comments/{post}', [CommentController::class, 'apiShow'])
 
 Route::delete('/comments/', [CommentController::class, 'apiDestroy'])
     ->name('api.comments.destroy');
+
+Route::post('/likes/', [LikeController::class, 'apiStore'])
+    ->middleware(['auth'])->name('api.likes.store');
+
+Route::get('/{user}/likes/{likeable_type}/{likeable_id}', [LikeController::class, 'apiShow'])
+    ->name('api.likes.show');
+
+Route::delete('/likes/', [LikeController::class, 'apiDestroy'])
+    ->name('api.likes.destroy');
 
 Route::get('/storage/{filename}', function ($filename) {
     $path = public_path('images/') . $filename;

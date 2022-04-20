@@ -25,6 +25,7 @@
 
                 <p>{{$post->review}}</p>
     </div>
+    @include('likes.show', ['user'=>auth()->user(), 'likeable_type'=>'Post', 'likeable_id'=>$post->id])
     @isset ($user)
     @if ($user->username == $post->user->username)
     <div>

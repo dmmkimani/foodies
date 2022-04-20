@@ -61,7 +61,7 @@
 </div>
 <div style="text-align: center;">
 <a href="{{route('posts.show', ['post'=>$post])}}">
-    View Comments
+    View Likes and Comments
 </a>
 </div>
 <hr class="rounded" style="margin-top:10px; margin-bottom: 10px;">

@@ -81,21 +81,25 @@
             color: blue;
         }
 
+        button {
+            padding: 0%;
+            background-color: transparent;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            outline: none;
+        }
+
         img {
             display: block;
         }
 
         img.post_picture {
-            width: 500;
+            margin: auto;
+            max-width: 100%;
             height: 375;
             margin-bottom: 7.5px;
-        }
-
-        img.profile_picture {
-            margin: auto;
-            width: 340px;
-            height: 255px;
-            margin-bottom: 10px;
         }
 
         ul.nav>li {
@@ -163,6 +167,7 @@
         input.price {
             text-align: center;
             width: 120px;
+            height: 50px;
         }
 
         input.rating {
@@ -251,6 +256,8 @@
     <div id="content">
         @yield('content')
     </div>
+    <div id="app"></div>
+    <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 
 </html>

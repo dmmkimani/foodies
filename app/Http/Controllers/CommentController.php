@@ -8,15 +8,6 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function apiShow(Post $post) 
-    {
-        $response = [
-            $post->id,
-            $post->comments
-        ];
-        return $response;
-    }
-
     public function apiStore(Request $request)
     {
         $validatedData = $request->validate([
@@ -30,6 +21,15 @@ class CommentController extends Controller
         $c->save();
 
         return $c;
+    }
+    
+    public function apiShow(Post $post) 
+    {
+        $response = [
+            $post->id,
+            $post->comments
+        ];
+        return $response;
     }
 
     public function apiDestroy(Request $request)
