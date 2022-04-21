@@ -48,7 +48,7 @@
                 createComment() {
                     axios.post("{{route('api.comments.store')}}", {
                         post_id: this.post_id,
-                        comment: this.newComment
+                        comment: this.newComment,
                     }).then(response => {
                         this.comments.push(response.data);
                         this.newComment = "";

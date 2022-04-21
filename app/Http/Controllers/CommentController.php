@@ -21,11 +21,13 @@ class CommentController extends Controller
         $c->comment = $validatedData['comment'];
         $c->save();
 
-        CommentController::sendNotification(
-            $c->post,  
-            $c->user_username, 
-            $c->comment
-        );
+        if ($c->user_username != $c->post->user_username) {
+            CommentController::sendNotification(
+                $c->post,  
+                $c->user_username, 
+                $c->comment
+            );
+        }
 
         return $c;
     }
@@ -33,8 +35,8 @@ class CommentController extends Controller
     public function apiShow(Post $post) 
     {
         $response = [
-            $post->id,
-            $post->comments
+            $post->id, // the id of the post
+            $post->comments // the many comments it may have
         ];
         return $response;
     }

@@ -45,7 +45,7 @@ class PostLiked extends Notification
         
         return (new MailMessage)
                     ->subject('Your review has been liked!')
-                    ->greeting('Hello Foodie!')
+                    ->greeting('Hey '.$this->likeable->user_username.'!')
                     ->line($this->user_username.' liked your review!')
                     ->action('Click here to see your review', $url)
                     ->line('Thank you for using our application!');

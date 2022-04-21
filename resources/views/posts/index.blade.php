@@ -78,11 +78,28 @@
     </h5>
     @endisset
 </div>
+@isset($user)
+@if ($user->admin)
+<div style="text-align: center;">
+    <a href="{{route('posts.show', ['post'=>$post])}}">
+        View Comments
+    </a>
+</div>
+@else
 <div style="text-align: center;">
     <a href="{{route('posts.show', ['post'=>$post])}}">
         View Likes and Comments
     </a>
 </div>
+@endif
+@else
+<div style="text-align: center;">
+    <a href="{{route('posts.show', ['post'=>$post])}}">
+        View Likes and Comments
+    </a>
+</div>    
+@endisset
+
 <hr class="rounded" style="margin-top:10px; margin-bottom: 10px;">
 @endforeach
 <span>

@@ -19,10 +19,12 @@ class LikeController extends Controller
         $l->likeable_type = "App\Models\\".$request['likeable_type'];
         $l->save();
         
-        LikeController::sendNotification(
-            $l->likeable,
-            $l->user_username
-        );
+        if ($l->user_username != $l->likeable->user_username) {
+            LikeController::sendNotification(
+                $l->likeable,
+                $l->user_username
+            );
+        }
 
         return $l;
     }

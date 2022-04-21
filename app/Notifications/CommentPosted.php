@@ -46,7 +46,7 @@ class CommentPosted extends Notification
         
         return (new MailMessage)
                     ->subject('You have a new comment on one of your reviews!')
-                    ->greeting('Hello Foodie!')
+                    ->greeting('Hey '.$this->post->user_username.'!')
                     ->line($this->user_username.' commented on your review:')
                     ->line($this->comment)
                     ->action('Click here to see your review', $url)
