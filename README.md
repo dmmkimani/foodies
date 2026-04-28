@@ -28,9 +28,9 @@ The system prioritises server-side rendering while selectively introducing clien
 ## Technology Stack
 
 **Backend:** Laravel 9 (PHP 8.0+)
-
+<br>
 **Frontend:** Blade Templating Engine, Vue.js + Axios for client-side interactivity
-
+<br>
 **Database:** MySQL
-
+<br>
 **ORM:** Eloquent
